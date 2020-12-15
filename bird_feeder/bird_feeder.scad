@@ -11,7 +11,7 @@ RADIUS = 30;
 TRIANGLE_BASE = 5;
 
 INNER_RADIUS = 35;
-OUTER_RADIUS = 100;
+OUTER_RADIUS = 90;
 
 SLANT_ANGLE = 62;
 TOP_JOINT_DIMENSIONS = [ OUTER_RADIUS - ( cos( SLANT_ANGLE ) * HEIGHT ), 4, 4 ];
@@ -55,12 +55,12 @@ module Connectors() {
 };
 
 // Object Complete
-Ring( INNER_RADIUS, height=HEIGHT );
-Connectors() { Arch(); }
-Ring( OUTER_RADIUS );
+*Ring( INNER_RADIUS, height=HEIGHT );
+*Connectors() { Arch(); }
+*Ring( OUTER_RADIUS );
 
 // Object Exploded
-*translate( [ 0, 0, HEIGHT + TOP_JOINT_DIMENSIONS[ 2 ] ] ) rotate( [ 180, 0, 0 ] ) {
+translate( [ 0, 0, HEIGHT + TOP_JOINT_DIMENSIONS[ 2 ] ] ) rotate( [ 180, 0, 0 ] ) {
    Ring( INNER_RADIUS, height=HEIGHT );
    difference() {
       Connectors() { Arch(); }
@@ -68,4 +68,4 @@ Ring( OUTER_RADIUS );
       Ring( OUTER_RADIUS );
    };
 }
-*translate( [ 300, 0, 0 ] )  Ring( OUTER_RADIUS );
+translate( [ 300, 0, 0 ] )  Ring( OUTER_RADIUS );
